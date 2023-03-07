@@ -38,7 +38,19 @@ fn main() {
             }).collect();
             println!("{{\"measurement\": \"pbs_hosts\", \"datapoints\": {}}}", serde_json::to_string(&resp).unwrap());
         },
-        Resource::Resv => todo!(),
-        Resource::Que => todo!(),
+        Resource::Resv => {
+            let resp: Vec<_> = srv.stat_reservation(&None, None).unwrap().resources.iter_mut().map(|x| {
+                x.add("name".to_string(), Attrl::Value(Op::Default(x.name())));
+                x.attribs().json()
+            }).collect();
+            println!("{{\"measurement\": \"pbs_resvs\", \"datapoints\": {}}}", serde_json::to_string(&resp).unwrap());
+        },
+        Resource::Que => {
+            let resp: Vec<_> = srv.stat_que(&None, None).unwrap().resources.iter_mut().map(|x| {
+                x.add("name".to_string(), Attrl::Value(Op::Default(x.name())));
+                x.attribs().json()
+            }).collect();
+            println!("{{\"measurement\": \"pbs_resvs\", \"datapoints\": {}}}", serde_json::to_string(&resp).unwrap());
+        },
     };
 }
