@@ -50,7 +50,7 @@ fn main() {
                 x.add("name".to_string(), Attrl::Value(Op::Default(x.name())));
                 x.attribs().json()
             }).collect();
-            println!("{{\"measurement\": \"pbs_resvs\", \"datapoints\": {}}}", serde_json::to_string(&resp).unwrap());
+            println!("{{\"measurement\": \"pbs_ques\", \"datapoints\": {}}}", serde_json::to_string(&resp).unwrap());
         },
     };
 }
