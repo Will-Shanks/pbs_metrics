@@ -2,6 +2,9 @@
 name = "pbs_metrics"
 version = "0.1.0"
 edition = "2021"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/Will-Shanks/pbs_metrics"
+description = "cli for generating pbs metrics in telegrafs jsonv2 format"
 
 [dependencies]
 pbs = { path = "../pbs" } 
